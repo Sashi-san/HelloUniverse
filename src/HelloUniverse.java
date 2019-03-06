@@ -36,11 +36,15 @@ public class HelloUniverse {
         neptune.matiere="gazeuse";
         neptune.diametre=49532;
 
-       // System.out.println(jupiter.nom+" est une planète "+jupiter.matiere+" avec un diamètre de "+jupiter.diametre+" kilomètres.");
+       /* System.out.println(jupiter.nom+" est une planète "+jupiter.matiere+" avec un diamètre de "+jupiter.diametre+" kilomètres.");
         neptune.revolution(-3542);
         mars.rotation(-684);
         venus.rotation(1250);
-
+        */
+        int totalVisiteurs;
+        mars.accueillirVaisseau(8);
+        mars.accueillirVaisseau("FREGATE");
+        System.out.println("Le nombre d'humains ayant déjà séjourné sur Mars est actuellement de "+mars.totalVisiteurs+".");
     }
 
 }
