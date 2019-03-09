@@ -1,28 +1,46 @@
 public class Planete {
-    String  nom;
-    String  matiere;
-    long    diametre;
-    int     tour;
-    int     totalVisiteurs;
+    String nom;
+    int diametre;
+    String matiere;
+    int totalVisiteurs;
+    Atmosphere atmosphere;
+    Vaisseau vaisseauAccoste;
 
-    void revolution(int angle){
-        tour=angle/360;
-        System.out.println(nom+" a effectué "+tour+" tours complet autour de son étoile.");
+    int revolution(int degres){
+        System.out.println("Je suis la planète "+nom+" et je tourne autour de mon étoile de "+degres+" degrés.");
+        return degres/360;
     }
-    void rotation(int angle){
-        tour=angle/360;
-        System.out.println(nom+" a effectué "+tour+" tours complet autour d'elle même");
+
+    int rotation(int degres){
+        System.out.println("Je suis la planète "+nom+" et je tourne sur moi-même de "+degres+" degrés.");
+        return degres/360;
     }
-    void accueillirVaisseau(int nouveauxHumains){
-        totalVisiteurs=totalVisiteurs+nouveauxHumains;
+
+    void accueillirVaisseau(int nbHumains){
+        totalVisiteurs+=nbHumains;
     }
-    void accueillirVaisseau(String vaisseau){
-        if(vaisseau=="CHASSEUR"){
-            totalVisiteurs=totalVisiteurs+3;
-        }else if(vaisseau=="FREGATE"){
-            totalVisiteurs=totalVisiteurs+12;
-        }else if(vaisseau=="CROISEUR"){
-            totalVisiteurs=totalVisiteurs+50;
+
+    Vaisseau accueillirVaisseau(Vaisseau vaisseau){
+        Vaisseau vaisseauReturn = null;
+
+        if(vaisseauAccoste == null)
+            vaisseauAccoste = vaisseau;
+        else{
+            vaisseauReturn = vaisseauAccoste;
+            vaisseauAccoste = vaisseau;
         }
+
+
+        if (vaisseau.typeVaisseau.equals("CHASSEUR")){
+            totalVisiteurs+=vaisseau.totalVisiteurs;
+        }
+        else if (vaisseau.typeVaisseau.equals("FREGATE")){
+            totalVisiteurs+=vaisseau.totalVisiteurs;
+        }
+        else if (vaisseau.typeVaisseau.equals("CROISEUR")){
+            totalVisiteurs+=vaisseau.totalVisiteurs;
+        }
+
+        return vaisseauReturn;
     }
 }
